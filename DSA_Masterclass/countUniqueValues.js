@@ -1,5 +1,6 @@
 //use multiple pointers
 // 0(n) time complexity | 0(1) space complexity
+// solution maintains space complexity by reordering the unique elements to the beginning
 
 function countUniqueValues(array){
     let current = 0;
