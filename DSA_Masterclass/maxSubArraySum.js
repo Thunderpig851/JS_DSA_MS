@@ -18,6 +18,7 @@ function  maxSubArraySum(array, n){
     }
     // slide along the array to look for largest sum
     for (let i = 0; i < array.length; i++) {
+        // adjust first to avoid double comparison
        currentSum = currentSum - array[i] + array[i + n]
        if (currentSum > maxSum) {
            maxSum = currentSum;
@@ -29,9 +30,9 @@ function  maxSubArraySum(array, n){
 
 
 
-console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4)) //17
-console.log(maxSubArraySum([4, 2, 1, 6, 2], 1)) //6
-console.log(maxSubArraySum([4, 2, 1, 6, 2], 4))
+console.log(maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4)) // 17
+console.log(maxSubArraySum([4, 2, 1, 6, 2], 1)) // 6
+console.log(maxSubArraySum([4, 2, 1, 6, 2], 4)) // 13
 console.log(maxSubArraySum([], 4)) //null
 
 
