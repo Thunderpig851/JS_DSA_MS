@@ -22,4 +22,4 @@ function binarySearch(array, target) {
 console.log(binarySearch([1, 4, 7, 9, 19, 21, 71], 9)); // 3
 console.log(binarySearch([1, 4, 7, 9, 19, 21, 71], 4)); // 1
 console.log(binarySearch([2, 4, 7, 9, 19, 21, 71, 100, 900], 7)); //2
-console.log(binarySearch([1, 4, 7, 9, 19, 21, 71], 2)) //null
+console.log(binarySearch([1, 4, 7, 9, 19, 21, 71], 2)) // -1
