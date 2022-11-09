@@ -15,6 +15,9 @@
 
 // Space Complexity - O(1)
 
+/*
+Time Complexity: O(n)
+*/
 function isSubsequence(string1, string2) {
     //two pointers
     //string2 is known to be longer
@@ -22,9 +25,12 @@ function isSubsequence(string1, string2) {
     let j = 0;
     //loop through 2
     while (i < string2.length - 1) {
+        // if i has progressed past the length of string1
         if (i === string1.length - 1) {
+            //return true
             return true;
         }
+        //outer bounds
         if (j > string2.length - 1) {
             return false;
         }

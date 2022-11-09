@@ -1,4 +1,7 @@
-// Runs O(log n)
+
+/*
+Time Complexity: O(log n)
+*/
 function binarySearch(array, target) {
     var low = 0;
     var high = array.length - 1;
