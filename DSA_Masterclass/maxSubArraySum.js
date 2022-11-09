@@ -1,9 +1,8 @@
-//takes in an array and number of elements
-// sliding window pattern 
-// build window out of allowed elements
-// slide window along the array to look for largest sum
+/*
+Time Complexity: O(n)
+*/
 
-// This runs in 0(n) time since we are not looping in the loop
+
 function  maxSubArraySum(array, n){ 
     let maxSum = 0;
     let currentSum  = 0;

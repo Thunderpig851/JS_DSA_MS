@@ -18,6 +18,9 @@
 
 // Space - O(1)
 
+/*
+Time Complexity: O(n log n)
+*/
 function areThereDuplicates(...args) {
     // two pointers for while loop
     args.sort();
