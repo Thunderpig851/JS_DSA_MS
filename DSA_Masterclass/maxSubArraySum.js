@@ -7,7 +7,7 @@ function  maxSubArraySum(array, n){
     let maxSum = 0;
     let currentSum  = 0;
 
-    if (array.length < 0) {
+    if (array.length === 0) {
         return null;
     }
     // get initial sum using n for range
