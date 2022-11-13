@@ -9,6 +9,9 @@
 // findLongestSubstring('thisishowwedoit') // 6
 // Time Complexity - O(n)
 
+/*
+Time Complexity: O(n)
+*/
 function findLongestSubstring(string){
     let longestSubString = 0;
     let startOfWindow = 0;
@@ -22,6 +25,7 @@ function findLongestSubstring(string){
             startOfWindow++;
         } else {
             letterSet.add(string[currentPosition]);
+            // fancy if
             longestSubString = Math.max(longestSubString, letterSet.size);
             currentPosition++;
         }
