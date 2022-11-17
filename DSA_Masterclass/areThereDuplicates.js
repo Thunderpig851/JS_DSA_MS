@@ -18,8 +18,17 @@
 
 // Space - O(1)
 
+
 /*
 Time Complexity: O(n log n)
+*/
+/*
+1. The function takes in an arbitrary number of arguments.
+2. The arguments are sorted.
+3. The function loops through the arguments and checks if the current argument is equal to the previous argument.
+4. If the current argument is equal to the previous argument, then there are duplicates.
+5. If the current argument is not equal to the previous argument, then there are no duplicates.
+6. The function returns true if there are duplicates and false if there are no duplicates.
 */
 function areThereDuplicates(...args) {
     // two pointers for while loop

@@ -7,9 +7,6 @@
 // power(2,2) // 4
 // power(2,4) // 16
 
-/*
-Time Complexity: O(n)
-*/
 function recursivePower(base, exponent){
     // base case
     if (exponent === 1) {
