@@ -1,6 +1,8 @@
+/*
+Time Complexity: O(n)
+*/
 function nestedEvenSum (obj) {
     let total = 0
-
     function inner(recursiveObj) {
         if (typeof recursiveObj === 'number' && recursiveObj % 2 === 0) {
             total += recursiveObj
@@ -17,7 +19,6 @@ function nestedEvenSum (obj) {
             }
         }
     }
-
     inner(obj);
     return total;
   }
