@@ -6,7 +6,6 @@ function recursiveFlatten(array) {
             flattened.push(...recursiveFlatten(array[i]));
         } else {
             flattened.push(array[i]);
-
         }
     }
     return flattened;
