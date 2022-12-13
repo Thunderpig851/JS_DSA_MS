@@ -1,9 +1,9 @@
 function stringifyNumbers(obj) {
 
     function inner(arr) {
-
+        // base case find a number
         if (typeof obj === 'number') {
-            
+            //convert to string
         }
         if (typeof obj === 'object') {
             for (let key in obj) {
