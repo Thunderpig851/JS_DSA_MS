@@ -9,7 +9,6 @@ function selectionSort(array) {
                 lowest = j;
             }
         }
-        console.log(array);
         let temp = array[i];
         array[i] = array[lowest];
         array[lowest] = temp;
