@@ -55,6 +55,26 @@ class DoublyLinkedList {
 
     shift() {
         // Edge Case: No Nodes
+        if (!this.head) {
+            return null;
+        }
+        // Edge Case: One Node
+        let temp = this.head
+        if (this.length === 1) {
+
+            this.head = null;
+            this.tail = null;
+
+        } else {
+
+            this.head = this.head.next;
+            this.head.prev = null
+
+        }
+
+        temp.prev = null;
+        this.length --;
+        return temp;
     }
 
     traverse() {
@@ -73,6 +93,5 @@ class DoublyLinkedList {
 const list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
-list.push(3);
-console.log(list.pop());
+console.log(list.shift());
 list.traverse();
