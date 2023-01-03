@@ -98,16 +98,63 @@ class DoublyLinkedList {
         let end = this.tail;
 
         while (start.next && end.prev) {
-            if (start.value === index) {
+            if (start.value === index - 1) {
                 return start;
             }
-            if (end.value === index) {
+            if (end.value === index -1) {
                 return end;
             }
             start = start.next;
             end = end.prev;
         }
         return null;
+    }
+ 
+    get(index) {
+        if (index < 0 || index > this.length) return null
+
+        if (index > (Math.floor(this.length / 2))) {
+            let counter = this.length - 1;
+            let end = this.tail;
+            while (end.prev) {
+                if (index  === counter) {
+                    return end;
+                }
+                counter --;
+                end = end.prev;
+            }
+        } else {
+            let counter = 0;
+            let start = this.head;
+            while (start.next) {
+                if (index === counter) {
+                    return start;
+                }
+                counter ++;
+                start = start.next;
+            }
+        }
+    }
+
+    set(value, index) {
+        let node = this.get(index);
+        if (node) {
+            node.value = value
+            return true
+        };
+        return false;
+    }
+
+    insert(value, index) {
+        if (index < 0 || index > this.length) return null
+        if (index === 0) {
+            this.shift(value);
+            return this;
+        }
+        let position = this.get(index);
+
+        
+
     }
 
     traverse() {
@@ -124,7 +171,14 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
+list.push(0);
 list.push(1);
 list.push(2)
 list.push(3);
+list.push(4);
+list.push(5);
+list.push(6);
+list.push(7);
+list.push(8);
+list.insert(10, 0);
 list.traverse();
