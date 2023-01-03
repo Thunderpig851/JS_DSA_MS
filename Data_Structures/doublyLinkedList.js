@@ -148,13 +148,45 @@ class DoublyLinkedList {
     insert(value, index) {
         if (index < 0 || index > this.length) return null
         if (index === 0) {
-            this.shift(value);
-            return this;
+            return this.unshift(value);
         }
-        let position = this.get(index);
-
+        if (index = this.length) {
+            return this.push(value);
+        }
+        // Use get to retrieve nodes around insertion point
+        let previousNode = this.get(index - 1);
+        let nextNode = this.get(index);
         
+        let newNode = new Node(value);
+        //Connect new node to previous position
+        previousNode.next = newNode;
+        newNode.prev = previousNode;
+        // Connect new node to next node
+        newNode.next = nextNode;
+        nextNode.prev = newNode;
 
+        return this;
+    }
+
+    remove(index) {
+        if (index < 0 || index > this.length) return null;
+        if (index === 0) return this.shift();
+        if (index === this.length -1 ) return this.pop();
+        
+        // Get removed and remove its connections before returning
+        let removed = this.get(index)
+        removed.next = null;
+        removed.prev = null;
+
+        // Get nodes around removed
+        let previous = this.get(index - 1);
+        let next = this.get(index + 1)
+
+        // Link previous and next
+        previous.next = next;
+        next.prev = previous;
+
+        return removed;
     }
 
     traverse() {
@@ -163,7 +195,7 @@ class DoublyLinkedList {
 
         while (current) {
             nodes.push(current);
-            console.log(current);
+            console.log(current.prev, current, current.next);
             current = current.next;
         }
         return nodes;
@@ -180,5 +212,5 @@ list.push(5);
 list.push(6);
 list.push(7);
 list.push(8);
-list.insert(10, 0);
+list.remove(4);
 list.traverse();
