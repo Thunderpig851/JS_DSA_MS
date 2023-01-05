@@ -110,6 +110,18 @@ class BinarySearchTree {
         helper(this.root);
         return data;
     }
+
+    DFS_InOrder(){
+        const data = [];
+
+        function helper(node) {
+            if (node.left) helper(node.left);
+            data.push(node.value);
+            if (node.right) helper(node.right);
+        }
+        helper(this.root);
+        return data;
+    }
 }
 
 
@@ -121,7 +133,7 @@ tree.insert(8);
 tree.insert(15);
 tree.insert(12);
 tree.insert(20);
-let nodes = tree.DFS_PostOrder();
+let nodes = tree.DFS_InOrder();
 for (let i = 0; i < nodes.length; i ++) {
     console.log(nodes[i]);
 }
