@@ -79,18 +79,36 @@ class BinarySearchTree {
         }
         return data;
     }
+
+    DFS_PreOrder(){
+        let data = [];
+
+        function helper(node) {
+
+            data.push(node.value);
+
+            if (node.left) {
+                helper(node.left);
+            }
+            if (node.right) {
+                helper(node.right)
+            }
+        }
+        helper(this.root);
+        return data;
+    }
 }
 
 
 var tree = new BinarySearchTree();
 tree.insert(10);
-tree.insert(5);
-tree.insert(20);
-tree.insert(2);
+tree.insert(6);
 tree.insert(3);
-tree.insert(1);
-tree.insert(25);
-let nodes = tree.BFS();
+tree.insert(8);
+tree.insert(15);
+tree.insert(12);
+tree.insert(20);
+let nodes = tree.DFS_PreOrder();
 for (let i = 0; i < nodes.length; i ++) {
     console.log(nodes[i]);
 }
