@@ -17,6 +17,9 @@ class PriorityQueue {
         }
     }
 
+    /*
+    Time Complexity: O(log n)
+    */
     enqueue(value, priority) {
         let node = new Node(value, priority)
         this.values.push(node);
@@ -57,6 +60,9 @@ class PriorityQueue {
       }
     }
 
+    /*
+    Time Complexity: O(log n)
+    */
     dequeue() {
         const max = this.values[0];
         const end = this.values.pop();
