@@ -1,6 +1,6 @@
-class MaxBinaryHeap {
+class PriorityQueue {
     constructor() {
-        this.values = [41, 39, 33, 18, 27, 12];
+        this.values = [];
     }
 
     bubbleUp() {
@@ -10,15 +10,16 @@ class MaxBinaryHeap {
         while(index > 0) {
             let parentIndex = Math.floor((index - 1) / 2);
             let parent = this.values[parentIndex];
-            if (element < parent) break;
+            if (element.priority > parent.priority) break;
             this.values[parentIndex] = element;
             this.values[index] = parent;
             index = parentIndex;
         }
     }
 
-    insert(value) {
-        this.values.push(value);
+    enqueue(value, priority) {
+        let node = new Node(value, priority)
+        this.values.push(node);
         this.bubbleUp()
         return this;
     }
@@ -36,15 +37,15 @@ class MaxBinaryHeap {
 
         if (left < length) {
             leftValue = this.values[left];
-            if (leftValue > element) {
+            if (leftValue.priority < element.priority) {
                 swap = left;
             }
         }
         if (right < length) {
             rightValue = this.values[right];
             if (
-                (swap === null && rightValue > element) || 
-                (swap !== null && rightValue > leftValue)
+                (swap === null && rightValue.priority < element.priority) || 
+                (swap !== null && rightValue.priority < leftValue.priority)
                 ) {
                 swap = right;
             }
@@ -56,7 +57,7 @@ class MaxBinaryHeap {
       }
     }
 
-    remove() {
+    dequeue() {
         const max = this.values[0];
         const end = this.values.pop();
         if (this.values.length > 0) {
@@ -72,15 +73,26 @@ class MaxBinaryHeap {
     }
 }
 
-let heap = new MaxBinaryHeap();
-heap.insert(55);
-heap.traverse();
-console.log(heap.remove());
-heap.traverse();
-heap.insert(100);
-heap.insert(1);
-heap.traverse();
-console.log(heap.remove());
-heap.traverse();
+class Node {
+    constructor(value, priority){
+        this.value = value;
+        this.priority = priority;
+    }
+}
 
 
+const queue = new PriorityQueue();
+queue.enqueue("sprained ankle", 3)
+queue.enqueue("back pain", 5)
+queue.enqueue("exploded knee", 2)
+queue.enqueue("broken wrist", 3)
+queue.enqueue("tooth ache", 5)
+queue.enqueue("internal bleeding", 1)
+queue.enqueue("migraine", 4)
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
