@@ -25,11 +25,25 @@ class Graph {
         }
         return this;
     }
+
+    removeVertex(vertex) {
+        while (this.adjacencyList[vertex].length) {
+            const adjacentNode = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, adjacentNode);
+        }
+        delete this.adjacencyList[vertex];
+    }
 }
 
 const graph = new Graph();
+graph.addVertex('Aspen');
+graph.addVertex('New York');
 graph.addVertex('Tokyo');
 graph.addVertex('Berlin');
-graph.addEdge('Tokyo', 'Berlin')
-graph.removeEdge('Tokyo', 'Berlin')
-console.log(graph.adjacencyList)
+graph.addVertex('Los Angeles');
+graph.addEdge('Tokyo', 'Berlin');
+graph.addEdge('Los Angeles', 'Berlin');
+graph.addEdge('Tokyo', 'Los Angeles');
+graph.addEdge('Los Angeles', 'Aspen');
+graph.removeVertex('Tokyo');
+console.log(graph.adjacencyList);
