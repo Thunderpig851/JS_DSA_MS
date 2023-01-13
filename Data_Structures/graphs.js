@@ -33,6 +33,25 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
     }
+
+    DFS_Recursive(vertex) {
+        let order = [];
+        let visited = {};
+        let ref = this.adjacencyList;
+        
+        function DFS(node){
+            order.push(node)
+            visited[node] = true;
+            for (let i = 0; i < ref[node].length; i ++) {
+                let current = ref[node][i];
+                if (!visited[current]) {
+                    DFS(current)
+                }
+            }
+        }
+        DFS(vertex);
+        return order; 
+    }
 }
 
 const graph = new Graph();
@@ -45,5 +64,6 @@ graph.addEdge('Tokyo', 'Berlin');
 graph.addEdge('Los Angeles', 'Berlin');
 graph.addEdge('Tokyo', 'Los Angeles');
 graph.addEdge('Los Angeles', 'Aspen');
-graph.removeVertex('Tokyo');
+graph.addEdge('New York', 'Aspen');
+console.log(graph.DFS_Recursive('Los Angeles'));
 console.log(graph.adjacencyList);
