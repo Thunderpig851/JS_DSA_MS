@@ -34,14 +34,18 @@ class Graph {
         delete this.adjacencyList[vertex];
     }
 
-    DFS_Recursive(vertex) {
+    BFS_Recursive(vertex) {
         let order = [];
         let visited = {};
         let ref = this.adjacencyList;
-        
+
         function DFS(node){
+
+            if (!node) return;
+
             order.push(node)
             visited[node] = true;
+
             for (let i = 0; i < ref[node].length; i ++) {
                 let current = ref[node][i];
                 if (!visited[current]) {
@@ -51,6 +55,29 @@ class Graph {
         }
         DFS(vertex);
         return order; 
+    }
+
+    DFS_Iterative(vertex) {
+        let stack = [];
+        let nodes = [];
+        let visited = {};
+
+        stack.push(vertex);
+        visited[vertex] = true;
+
+        while (stack.length) {
+            let current = stack.pop();
+            nodes.push(current);
+
+            this.adjacencyList[current].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    stack.push(neighbor);
+                    visited[neighbor] = true;
+                }
+            });
+        }
+        
+        return nodes;
     }
 }
 
@@ -66,4 +93,5 @@ graph.addEdge('Tokyo', 'Los Angeles');
 graph.addEdge('Los Angeles', 'Aspen');
 graph.addEdge('New York', 'Aspen');
 console.log(graph.DFS_Recursive('Los Angeles'));
+console.log(graph.DFS_Iterative('Los Angeles'));
 console.log(graph.adjacencyList);
