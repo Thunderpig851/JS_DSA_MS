@@ -39,7 +39,7 @@ class Graph {
         let visited = {};
         let ref = this.adjacencyList;
 
-        function DFS(node){
+        function BFS(node){
 
             if (!node) return;
 
@@ -49,49 +49,71 @@ class Graph {
             for (let i = 0; i < ref[node].length; i ++) {
                 let current = ref[node][i];
                 if (!visited[current]) {
-                    DFS(current)
+                    BFS(current)
                 }
             }
+        }
+        BFS(vertex);
+        return order; 
+    }
+
+    DFS_Recursive(vertex) {
+        let order = [];
+        let visited = {};
+        let ref = this.adjacencyList;
+
+        function DFS(node){
+            if (!node) return;
+            order.push(node)
+            visited[node] = true;
+
+            ref[node].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    return DFS(neighbor);
+                }
+        })
         }
         DFS(vertex);
         return order; 
     }
 
-    DFS_Iterative(vertex) {
-        let stack = [];
-        let nodes = [];
-        let visited = {};
+    DFS_Iterative(start) {
+        const stack = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
 
-        stack.push(vertex);
-        visited[vertex] = true;
+        visited[start] = true;
+        while(stack.length){
+            currentVertex = stack.pop();
+            result.push(currentVertex);
 
-        while (stack.length) {
-            let current = stack.pop();
-            nodes.push(current);
-
-            this.adjacencyList[current].forEach(neighbor => {
-                if (!visited[neighbor]) {
-                    stack.push(neighbor);
-                    visited[neighbor] = true;
-                }
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+               if(!visited[neighbor]){
+                   visited[neighbor] = true;
+                   stack.push(neighbor)
+               } 
             });
         }
-        
-        return nodes;
+        return result;
     }
 }
 
 const graph = new Graph();
-graph.addVertex('Aspen');
-graph.addVertex('New York');
-graph.addVertex('Tokyo');
-graph.addVertex('Berlin');
-graph.addVertex('Los Angeles');
-graph.addEdge('Tokyo', 'Berlin');
-graph.addEdge('Los Angeles', 'Berlin');
-graph.addEdge('Tokyo', 'Los Angeles');
-graph.addEdge('Los Angeles', 'Aspen');
-graph.addEdge('New York', 'Aspen');
-console.log(graph.DFS_Recursive('Los Angeles'));
-console.log(graph.DFS_Iterative('Los Angeles'));
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
+graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('C', 'E');
+graph.addEdge('D', 'E');
+graph.addEdge('D', 'F');
+graph.addEdge('E', 'F');
+console.log(graph.DFS_Recursive('A'));
+console.log(graph.DFS_Iterative('A'));
+console.log(graph.BFS_Recursive('A'));
 console.log(graph.adjacencyList);
