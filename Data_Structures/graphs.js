@@ -34,27 +34,28 @@ class Graph {
         delete this.adjacencyList[vertex];
     }
 
-    BFS_Recursive(vertex) {
-        let order = [];
+    BFS(start) {
+        let queue = [start];
+        let nodes = [];
         let visited = {};
-        let ref = this.adjacencyList;
+        visited[start] = true;
+        let current;
 
-        function BFS(node){
+        let adjacencyList = this.adjacencyList;
 
-            if (!node) return;
+        while (queue.length) {
 
-            order.push(node)
-            visited[node] = true;
+            current = queue.shift();
+            nodes.push(current);
 
-            for (let i = 0; i < ref[node].length; i ++) {
-                let current = ref[node][i];
-                if (!visited[current]) {
-                    BFS(current)
+            adjacencyList[current].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    queue.push(neighbor);
+                    visited[neighbor] = true;
                 }
-            }
+            });
         }
-        BFS(vertex);
-        return order; 
+        return nodes;
     }
 
     DFS_Recursive(vertex) {
@@ -113,7 +114,6 @@ graph.addEdge('C', 'E');
 graph.addEdge('D', 'E');
 graph.addEdge('D', 'F');
 graph.addEdge('E', 'F');
-console.log(graph.DFS_Recursive('A'));
+console.log(graph.DFS_Recursive('A')); 
 console.log(graph.DFS_Iterative('A'));
-console.log(graph.BFS_Recursive('A'));
-console.log(graph.adjacencyList);
+console.log(graph.BFS('A'));
