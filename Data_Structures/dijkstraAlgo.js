@@ -63,6 +63,7 @@ class WeightedGraph {
                     if (candidate < distances[nextNode.node]) {
                         distances[nextNeighbor] = candidate;
                         previous[nextNeighbor] = smallest;
+                        nodes.enqueue(nextNeighbor, candidate)
                     }
                 }
             }
