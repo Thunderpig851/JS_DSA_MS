@@ -12,7 +12,7 @@ var twoSum = function(numbers, target) {
         if (storage[target - num] !== undefined) {
             return [storage[target - num], i]
         } else {
-            storage[num] = i
+            storage[num] = i;
         } 
     }
     return []
