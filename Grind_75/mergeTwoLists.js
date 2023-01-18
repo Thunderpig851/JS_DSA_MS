@@ -8,12 +8,11 @@ function mergeTwoLists(list1, list2) {
         return list1;
     }
 
-    let longest = list1.length >= list2.length ? list1 : list2;
     let i = 0;
     let j = 0;
     let sorted = [];
 
-    while (i <= longest && j <= longest) {
+    while (i < list1.length && j < list2.length) {
         if (list1[i] < list2[j]) {
             sorted.push(list1[i]);
             i ++;
@@ -26,7 +25,7 @@ function mergeTwoLists(list1, list2) {
     }
 
     while (i < list1.length) {
-        sorted.push(list[i]);
+        sorted.push(list1[i]);
         i ++;
     }
 
@@ -35,7 +34,7 @@ function mergeTwoLists(list1, list2) {
         j ++;
     }
 
-    return sorted
+    return sorted;
 }
 
-console.log(mergeTwoLists([], []));
+console.log(mergeTwoLists([10, 20, 50, 100], [1, 22, 34, 49, 75]));
