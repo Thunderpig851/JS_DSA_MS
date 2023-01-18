@@ -14,7 +14,7 @@ var isValid = function(string) {
             stack.pop();
         }  else if ((char === ')' || char === '}' || char === ']') && (stack.length === 0)) {
             return false;
-        } else if (stack !== char) {
+        } else if (stack[stack.length - 1] !== char) {
             return false
         }
 
