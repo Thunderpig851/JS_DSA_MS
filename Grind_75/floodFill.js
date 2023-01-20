@@ -1,4 +1,7 @@
-var floodFill = function(image, sr, sc, color) {
+/*
+Time Complexity: O(N)
+*/
+ var floodFill = function(image, sr, sc, color) {
     const ref = image[sr][sc];
     if (ref === color) return image;
 
