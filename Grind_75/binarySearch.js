@@ -11,14 +11,14 @@ var search = function(numbers, target) {
         // if middle is target 
         if (numbers[middle] === target) {
             //return true
-            return middle
+            return middle;
             // if middle is larger 
         } else if (numbers[middle] > target) {
             // search the right half
-            end = middle
+            end = middle;
             // if middle is smaller
         } else {
-            start = middle + 1
+            start = middle + 1;
         }
     }
     //return false
