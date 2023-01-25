@@ -1,10 +1,12 @@
 var updateMatrix = function(matrix) {
+    let known
     for (let i = 0; i < matrix.length; i ++) {
         for (let j = 0; j < matrix[i].length; j ++) {
-            if (matrix[i][j] !== 0) {
-                matrix[i][j] = Infinity;
-            }
+            if (matrix[i][j] === 1) {
+                let smallestDelta;
+
         }
+      }
     }
     return matrix;
 };
