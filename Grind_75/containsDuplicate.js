@@ -1,9 +1,12 @@
 var containsDuplicate = function(numbers) {
-    let numberObj = {};
+    let numberMap = new Map();
     for (let i = 0; i < numbers.length; i ++) {
         let current = numbers[i];
-        numberObj[current] ? numberObj[current] += 1 : numberObj[current] = 1;
-        if (numberObj[current] > 1) return true;
+        if (!numberMap.has(current)) {
+            numberMap.set(current, 1);
+        } else {
+            return true;
+        }
     }
     return false;
 };
