@@ -1,3 +1,6 @@
+/*
+Time Complexity: O(n)
+*/
 const cakes = (recipe, available) => {
     let obj = {};
     for (let key in recipe) {
