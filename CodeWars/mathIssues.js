@@ -1,16 +1,24 @@
+/*
+Time Complexity: O(1)
+*/
 Math.round = function(number) {
     let numArr= String(number).split('.');
     if (!numArr[1]) return Number(numArr[0])
     return Number(numArr[1].slice(0, 1)) >= 5 ? Number(numArr[0]) + 1 : Number(numArr[0]);
-    
   };
   
+  /*
+  Time Complexity: O(1)
+  */
   Math.ceil = function(number) {
     let numArr= String(number).split('.');
     if (!numArr[1]) return Number(numArr[0])
-    return Number(numArr[1].slice(0, 1)) > 0 ? Number(numArr[0]) + 1 : Number(numArr[0] + 1);
+    return Number(numArr[1]) > .1 ? Number(numArr[0]) + 1 : Number(numArr[0] + 1);
   };
   
+  /*
+  Time Complexity: O(1)
+  */
   Math.floor = function(number) {
     let numArr= String(number).split('.');
     return Number(numArr[0])
