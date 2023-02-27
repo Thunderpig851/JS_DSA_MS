@@ -1,3 +1,6 @@
+/*
+Time Complexity: O(n)
+*/
 function score( dice ) {
     // set total
     let total = 0;
